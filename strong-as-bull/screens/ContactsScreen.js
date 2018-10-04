@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text} from "react-native";
 import Contact from '../components/Contact.js';
+import customData from '../components/mock_data.json';
 
 export default class ContactsScreen extends React.Component {
 
@@ -10,7 +11,15 @@ export default class ContactsScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        this.onClickAddContact = this.onClickAddContact.bind(this);
+        //this.onClickAddContact = this.onClickAddContact.bind(this);
+        this.state = {
+            contacts: '',
+        };
+    }
+
+
+    componentDidMount(){
+        this.setState({contacts: customData});
     }
 
     onClickAddContact(asdf) {
@@ -18,6 +27,7 @@ export default class ContactsScreen extends React.Component {
     }
 
     render() {
+        console.log(this.state.contacts);
         return (
             <ScrollView style={styles.container}>
                 <Text>
@@ -35,6 +45,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#fff',
     },
 });

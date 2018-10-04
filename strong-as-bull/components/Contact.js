@@ -18,3 +18,4 @@ export default class Contact extends React.Component {
     }
 
 }
+
