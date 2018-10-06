@@ -7,6 +7,7 @@ import { Container } from "native-base";
 import React from 'react';
 
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Icon } from 'native-base';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ContactList = props => {
 
@@ -15,16 +16,17 @@ const ContactList = props => {
             return allContacts.map(item => {
                 return (
                     <ListItem key={item.id} avatar>
-                        <Left>
-                            <Thumbnail source={{ uri: `${item.image}`}}/>
+                        <Left style={{justifyContent: 'center'}}>
+                            <Thumbnail source={{ uri: item.image}} />
                         </Left>
                         <Body>
-                            <Text>{`${item.first_name} ${item.last_name}`}</Text>
-                            <Text note>{`${item.phone_number}`}</Text>
-                            <Text note>{`${item.email}`}</Text>
+                            <Text>{item.first_name} {item.last_name}</Text>
+                            <Text note>{item.phone_number}</Text>
+                            <Text note>Company</Text>
+                            <Text note>{item.email}</Text>
                         </Body>
                         <Right style={{justifyContent: 'center'}}>
-                            <Icon name="heart" style={{paddingRight: 5, fontSize: 30}} />
+                            <MaterialCommunityIcons name="account-edit" size={32} />
                         </Right>
                     </ListItem>
                 )
@@ -32,14 +34,11 @@ const ContactList = props => {
         }
     };
     return (
-        <Container>
-            <Header />
-            <Content>
+            <Content style={{backgroundColor: '#fff'}}>
                 <List>
                     {list(props)}
                 </List>
             </Content>
-        </Container>
     )
 };
 

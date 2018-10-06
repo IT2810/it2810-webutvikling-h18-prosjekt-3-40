@@ -1,6 +1,4 @@
-
-  {
-    "contacts": [
+[
       {
         "id": 1,
         "first_name": "Lynnell",
@@ -401,5 +399,4 @@
         "phone_number": "8565993111",
         "image": "https://robohash.org/asperioreseiusest.png?size=50x50&set=set1"
       }
-    ]
-  }
+]
