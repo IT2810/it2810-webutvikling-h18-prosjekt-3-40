@@ -6,7 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import NotesScreen from '../screens/NotesScreen';
 import ContactsScreen from '../screens/ContactsScreen';
-import GoalsScreen from '../screens/Goals/GoalsScreen';
+import GoalsStackNavigator from "./GoalsStackNavigation";
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -55,7 +55,9 @@ ContactsStack.navigationOptions = {
 };
 
 const GoalsStack = createStackNavigator({
-    Goals: GoalsScreen,
+    Goals: GoalsStackNavigator,
+},{
+    headerMode: 'none',
 });
 
 GoalsStack.navigationOptions = {
