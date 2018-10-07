@@ -1,10 +1,9 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, Button} from "react-native";
-import ContactList from '../components/ContactList.js';
-import userData from '../components/mock_data.json';
+import {ScrollView, StyleSheet, Text, Button, TouchableOpacity} from "react-native";
+import ContactList from '../../components/ContactList.js';
+import userData from '../../components/mock_data.json';
 import {Icon} from 'native-base';
-import {MaterialCommunityIcons} from "../components/ContactList";
-import { createStackNavigator } from 'react-navigation';
+import {MaterialCommunityIcons} from "../../components/ContactList";
 
 export default class ContactsScreen extends React.Component {
 
@@ -12,8 +11,10 @@ export default class ContactsScreen extends React.Component {
         return {
             headerTitle: 'Contacts',
             headerRight: (
-                //<Button icon={{name: 'ios-add-outline'}} title='info' onPress={()=> alert('Hello world!')} color={'#000'} />
-                <Icon name={'ios-add-outline'} onPress={()=> alert('Hello world!')} style={{ paddingRight:20 }} />
+                <TouchableOpacity onPress={()=> navigation.navigate('CreateContact')}>
+                    <Icon name={'ios-add-outline'} style={styles.newContactButton}/>
+                </TouchableOpacity>
+
             ),
         };
     };
@@ -33,9 +34,10 @@ export default class ContactsScreen extends React.Component {
     render() {
         return (
             <ScrollView >
-                <ContactList
-                    allContacts={this.state.contacts}
-                />
+                    <ContactList
+                        allContacts={this.state.contacts}
+                        navigation={ this.props.navigation }
+                    />
             </ScrollView>
         );
     }
@@ -47,4 +49,8 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         backgroundColor: '#fff',
     },
+    newContactButton: {
+        marginRight: 20,
+    }
 });
+
