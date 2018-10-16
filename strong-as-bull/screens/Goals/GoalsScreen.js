@@ -35,7 +35,7 @@ export default class GoalsScreen extends React.Component {
     }
 
     eachGoal = (goal, i) => {
-        return (<Goal key={i} index={i} title={goal[0]} description={goal[1]}/>)
+        return (<Goal key={i} index={i} title={goal[0]} description={goal[1]} deleteGoal={this.deleteGoal.bind(this)}/>)
     };
 
     render() {

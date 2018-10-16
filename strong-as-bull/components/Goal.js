@@ -3,12 +3,16 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 export default class Goal extends React.Component {
 
+    deleteThisGoal () {
+        this.props.deleteGoal(this.props.index)
+    }
+
     render () {
         return(
             <View style={styles.goalView}>
                 <Text style={styles.goalText}>{this.props.title}</Text>
                 <Text>{this.props.description}</Text>
-                <TouchableOpacity style={styles.deleteButton} >
+                <TouchableOpacity style={styles.deleteButton} onPress={() => this.deleteThisGoal(false)} >
                     <Text style={styles.deleteText}>X</Text>
                 </TouchableOpacity>
             </View>
