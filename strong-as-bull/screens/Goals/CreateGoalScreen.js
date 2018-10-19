@@ -1,51 +1,46 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, TextInput } from "react-native";
-import Pedometer from '../../components/Pedometer.js';
+
 
 export default class CreateGoalScreen extends React.Component {
     static navigationOptions = {
         title: 'CreateGoal',
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            new_step_goal: 10000,
+        };
+    };
+
+    setNewGoal() {
+        this.setState({new_step_goal: Number(this.state.new_step_goal)});
+        console.log(typeof this.state.new_step_goal);
+        console.log(this.state.new_step_goal);
+        if (typeof this.state.new_step_goal === "number") {
+            const {params} = this.props.navigation.state;
+            params.setGoal(this.state.new_step_goal);
+            this.props.navigation.navigate('Goals');
+        }
+        else{
+            alert('New step goal must be a number!');
+        }
+    }
+
     render() {
-        let pedoAvail = '';
-        //if (Expo.Pedometer.isAvailableAsync()) {
-        //    pedoAvail = 'Pedometer is available for your device'
-        //}
-        //else {
-        //    pedoAvail = 'Pedometer is not available for your device'
-        //}
-        //let steps = Expo.Pedometer.getStepCountAsync(new Date(), new Date());
         return (
             <View style={styles.container}>
-                <Text>Goal Title:</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Write here'
-                    placeholderTextColor='black'
-                    underlineColorAndroid='transparent'/>
-                <Text>Description:</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Write here'
-                    placeholderTextColor='black'
-                    underlineColorAndroid='transparent'/>
+
                 <Text>Number of Steps:</Text>
                 <TextInput
                     style={styles.textInput}
-                    placeholder='Write here'
+                    placeholder='10000'
+                    onChangeText={(new_step_goal) => this.setState({new_step_goal: Number(new_step_goal)})}
                     placeholderTextColor='black'
                     underlineColorAndroid='transparent'/>
-                <Text>Finish Date:</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Write here'
-                    placeholderTextColor='black'
-                    underlineColorAndroid='transparent'/>
-                <Text>{pedoAvail}</Text>
-                <Pedometer/>
-                <TouchableOpacity style={styles.addButton} onPress={() => this.props.navigation.navigate('Goals')}>
-                    <Text style={styles.addButtonText}>Add Goal</Text>
+                <TouchableOpacity style={styles.addButton} onPress={() => this.setNewGoal()}>
+                    <Text style={styles.addButtonText}>Confirm</Text>
                 </TouchableOpacity>
             </View>
 
@@ -55,8 +50,12 @@ export default class CreateGoalScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 15,
+
         backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20
+
     },
     textInput: {
         alignSelf: 'stretch',
@@ -68,12 +67,15 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     addButton: {
+        position: 'absolute',
         backgroundColor: '#E91E63',
+        width: 300,
         height: 50,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 8,
+        bottom: 100,
     },
     addButtonText: {
         color: '#fff',

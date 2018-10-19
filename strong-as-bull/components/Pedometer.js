@@ -2,15 +2,23 @@ import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
 import { StyleSheet, Text, View } from "react-native";
+import * as Progress from 'react-native-progress';
+
 
 export default class PedometerSensor extends React.Component {
-    state = {
-        isPedometerAvailable: "checking",
-        pastStepCount: 0,
-        currentStepCount: 0,
-        status: '',
-        date_from: this.props.date_from,
-        date_to: this.props.date_to,
+    static navigationOptions = {
+        title: 'Pedometer',
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPedometerAvailable: "checking",
+            pastStepCount: 0,
+            currentStepCount: 0,
+            status: '',
+            progress: 0,
+        };
     };
 
     componentDidMount() {
@@ -25,7 +33,8 @@ export default class PedometerSensor extends React.Component {
 
         this._subscription = Pedometer.watchStepCount(result => {
             this.setState({
-                currentStepCount: result.steps
+                currentStepCount: result.steps,
+                progress: ((this.state.currentStepCount + this.state.pastStepCount) / this.props.step_goal),
             });
             if(this.state.currentStepCount + this.state.pastStepCount > this.props.step_goal){
                 this.setState({
@@ -37,6 +46,7 @@ export default class PedometerSensor extends React.Component {
                     status: 'In Progress'
                 })
             }
+
         });
 
         Pedometer.isAvailableAsync().then(
@@ -52,17 +62,16 @@ export default class PedometerSensor extends React.Component {
             }
         );
 
-
-
-        const start = new Date(this.state.date_from);
-        const end = new Date(this.state.date_to);
-
-
-
+        let start = new Date();
+        let end = new Date();
+        start.setHours(0,0,0);
 
         Pedometer.getStepCountAsync(start, end).then(
             result => {
-                this.setState({ pastStepCount: result.steps });
+                this.setState({
+                    pastStepCount: result.steps,
+                    progress: result.steps/this.props.step_goal
+                });
 
                 if(this.state.pastStepCount > this.props.step_goal) {
                     this.setState({
@@ -92,14 +101,9 @@ export default class PedometerSensor extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Current steps: {this.state.currentStepCount + this.state.pastStepCount}</Text>
-                <Text>
-                    Steps taken in the last 24 hours: {this.state.pastStepCount}
-                </Text>
-                <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
+                <Text>Current steps: {this.state.currentStepCount + this.state.pastStepCount} / {this.props.step_goal}</Text>
+                <Progress.Pie progress={this.state.progress} size={200} color={'rgba(100,100,100,1)'}/>
                 <Text>Status: {this.state.status}</Text>
-                <Text>{new Date(this.props.date_from).toString()}</Text>
-                <Text>{new Date(this.props.date_to).toString()}</Text>
             </View>
         );
     }
@@ -108,10 +112,11 @@ export default class PedometerSensor extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 15,
-        alignItems: "center",
-        justifyContent: "center"
-    }
+        marginTop: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
 });
 
 Expo.registerRootComponent(PedometerSensor);
