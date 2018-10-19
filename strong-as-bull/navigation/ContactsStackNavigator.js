@@ -1,13 +1,15 @@
 import ContactsScreen from "../screens/Contacts/ContactsScreen";
+import ContactListScreen from "../screens/Contacts/ContactListScreen";
 import CreateContactScreen from "../screens/Contacts/CreateContactScreen";
+import ViewContactScreen from "../screens/Contacts/ViewContactScreen";
 
 import React from 'react';
 import {createStackNavigator} from 'react-navigation'
-import ViewContactScreen from "../screens/Contacts/ViewContactScreen";
+
 
 
 const ContactsStackNavigator = createStackNavigator({
-    Contacts: ContactsScreen,
+    ContactList: ContactListScreen,
     CreateContact: CreateContactScreen,
     ViewContact: ViewContactScreen,
 },{
