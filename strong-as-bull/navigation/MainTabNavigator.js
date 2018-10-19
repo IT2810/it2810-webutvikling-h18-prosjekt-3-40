@@ -4,7 +4,6 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import NotesScreen from '../screens/NotesScreen';
 
 import ContactsStackNavigator from "./ContactsStackNavigator";
 import GoalsStackNavigator from "./GoalsStackNavigation";

@@ -1,19 +1,19 @@
 import 'react-native';
 import React from 'react';
-import ContactListScreen from '../../screens/contacts/ContactListScreen.js';
+import ViewContactScreen from '../../screens/contacts/ViewContactScreen.js';
 import renderer from 'react-test-renderer';
 
 
-//Fails due to navigator or Image:
-
-/*it('ContactListScreen snapshot', () => {
+/*
+it('CreateContact snapshot', () => {
     const snap = renderer.create(
-        <ContactListScreen/>
+        <ViewContactScreen/>
     ).toJSON();
 
     expect(snap).toMatchSnapshot();
 
-});*/
+});
+*/
 
 
 //To not add additional fail:
