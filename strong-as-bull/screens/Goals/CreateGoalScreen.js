@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, TextInput } from "react-native";
+import Pedometer from '../../components/Pedometer.js';
 
 export default class CreateGoalScreen extends React.Component {
     static navigationOptions = {
@@ -8,12 +9,13 @@ export default class CreateGoalScreen extends React.Component {
 
     render() {
         let pedoAvail = '';
-        if (Expo.Pedometer.isAvailableAsync()) {
-            pedoAvail = 'Pedometer is available for your device'
-        }
-        else {
-            pedoAvail = 'Pedometer is not available for your device'
-        }
+        //if (Expo.Pedometer.isAvailableAsync()) {
+        //    pedoAvail = 'Pedometer is available for your device'
+        //}
+        //else {
+        //    pedoAvail = 'Pedometer is not available for your device'
+        //}
+        //let steps = Expo.Pedometer.getStepCountAsync(new Date(), new Date());
         return (
             <View style={styles.container}>
                 <Text>Goal Title:</Text>
@@ -41,6 +43,7 @@ export default class CreateGoalScreen extends React.Component {
                     placeholderTextColor='black'
                     underlineColorAndroid='transparent'/>
                 <Text>{pedoAvail}</Text>
+                <Pedometer/>
                 <TouchableOpacity style={styles.addButton} onPress={() => this.props.navigation.navigate('Goals')}>
                     <Text style={styles.addButtonText}>Add Goal</Text>
                 </TouchableOpacity>

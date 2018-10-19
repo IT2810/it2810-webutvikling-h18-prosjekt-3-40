@@ -16,14 +16,45 @@ export default class GoalsScreen extends React.Component {
     };
 
     componentDidMount() {
+        let date_from = new Date('October 10, 2018');
+        let date_to = new Date('October 20, 2018');
         this.setState({
             goals: [
-                    {title: 'Goal 1', description: 'Description 1'},
-                    {title: 'Goal 211', description: 'Description 2'},
-                    {title: 'Goal 3', description: 'Description 3'},
-                    {title: 'Goal 4', description: 'Description 4'},
-                    {title: 'Goal 5', description: 'Description 5'},
-                    {title: 'Goal 6', description: 'Description 6'}
+                    {
+                        "title": 'Goal 1',
+                        "description": 'Description 1',
+                        "tot_steps": 10,
+                        "date_from": date_from,
+                        "date_to": date_to,
+                    },
+                    {
+                        "title": 'Goal 211',
+                        "description": 'Description 2',
+                        "tot_steps": 10,
+                        "date_from": new Date(),
+                        "date_to": new Date(),
+                    },
+                    {
+                        "title": 'Goal 3',
+                        "description": 'Description 3',
+                        "tot_steps": 10,
+                        "date_from": new Date(),
+                        "date_to": new Date(),
+                    },
+                    {
+                        "title": 'Goal 4',
+                        "description": 'Description 4',
+                        "tot_steps": 10,
+                        "date_from": new Date(),
+                        "date_to": new Date(),
+                    },
+                    {
+                        "title": 'Goal 5',
+                        "description": 'Description 5',
+                        "tot_steps": 10,
+                        "date_from": new Date(),
+                        "date_to": new Date(),
+                    },
             ]
 
 
@@ -36,11 +67,10 @@ export default class GoalsScreen extends React.Component {
             //    ['Goal 7', 'Description 7'],
             //    ['Goal 8', 'Description 8'],]
         });
-        this.storeItem('goals', this.state.goals);
-        const newGoals = this.retrieveItem('goals');
-        this.setState = {
-            goals: newGoals
-        }
+
+        //AsyncStorage.setItem('goals', JSON.stringify(this.state.goals));
+        //let newGoals = AsyncStorage.getItem('goals');
+        //this.setState({goals: newGoals})
     };
 
     async storeItem(key, item) {
@@ -57,13 +87,8 @@ export default class GoalsScreen extends React.Component {
     async retrieveItem(key) {
         try {
             const retrievedItem =  await AsyncStorage.getItem(key);
+            return JSON.parse(retrievedItem);
 
-            let item = JSON.parse(retrievedItem);
-            let goals = [];
-            for (var i=0; JSON.parse(retrievedItem).length; i++){
-                goals.push(JSON.parse(retrievedItem)[i]);
-            }
-            return goals;
         } catch (error) {
             console.log(error.message);
         }
@@ -73,6 +98,7 @@ export default class GoalsScreen extends React.Component {
     deleteGoal(i) {
         let arr = this.state.goals;
         arr.splice(i, 1);
+
         this.setState({goals: arr})
     }
 
@@ -81,12 +107,19 @@ export default class GoalsScreen extends React.Component {
     //};
 
     eachGoal = (goal, i) => {
-        return (<Goal key={i} index={i} title={goal.title} description={goal.description} deleteGoal={this.deleteGoal.bind(this)}/>)
+        return (<Goal
+            key={i}
+            index={i}
+            title={goal.title}
+            description={goal.description}
+            tot_steps={goal.tot_steps}
+            date_from={goal.date_from}
+            date_to={goal.date_to}
+            deleteGoal={this.deleteGoal.bind(this)}
+            />)
     };
 
     render() {
-
-
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.goalScrollView}>
@@ -94,8 +127,7 @@ export default class GoalsScreen extends React.Component {
                         this.state.goals.map(this.eachGoal)
                     }
                 </ScrollView>
-                <Text>{JSON.stringify(this.state.goals)}</Text>
-                <Text>{goals}</Text>
+
 
                 <TouchableOpacity style={styles.addButton} onPress={() => this.props.navigation.navigate('CreateGoal')} >
                     <Text style={styles.addButtonText}>+</Text>
