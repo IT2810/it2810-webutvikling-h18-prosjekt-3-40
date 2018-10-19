@@ -7,7 +7,10 @@ export default class PedometerSensor extends React.Component {
     state = {
         isPedometerAvailable: "checking",
         pastStepCount: 0,
-        currentStepCount: 0
+        currentStepCount: 0,
+        status: '',
+        date_from: this.props.date_from,
+        date_to: this.props.date_to,
     };
 
     componentDidMount() {
@@ -19,10 +22,21 @@ export default class PedometerSensor extends React.Component {
     }
 
     _subscribe = () => {
+
         this._subscription = Pedometer.watchStepCount(result => {
             this.setState({
                 currentStepCount: result.steps
             });
+            if(this.state.currentStepCount + this.state.pastStepCount > this.props.step_goal){
+                this.setState({
+                    status: 'Completed'
+                })
+            }
+            else{
+                this.setState({
+                    status: 'In Progress'
+                })
+            }
         });
 
         Pedometer.isAvailableAsync().then(
@@ -38,12 +52,28 @@ export default class PedometerSensor extends React.Component {
             }
         );
 
-        const end = new Date();
-        const start = new Date();
-        start.setDate(end.getDate() - 1);
+
+
+        const start = new Date(this.state.date_from);
+        const end = new Date(this.state.date_to);
+
+
+
+
         Pedometer.getStepCountAsync(start, end).then(
             result => {
                 this.setState({ pastStepCount: result.steps });
+
+                if(this.state.pastStepCount > this.props.step_goal) {
+                    this.setState({
+                        status: 'Completed'
+                    })
+                }
+                else {
+                    this.setState({
+                        status: 'In Progress'
+                    })
+                }
             },
             error => {
                 this.setState({
@@ -54,6 +84,7 @@ export default class PedometerSensor extends React.Component {
     };
 
     _unsubscribe = () => {
+
         this._subscription && this._subscription.remove();
         this._subscription = null;
     };
@@ -61,11 +92,14 @@ export default class PedometerSensor extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text>Current steps: {this.state.currentStepCount + this.state.pastStepCount}</Text>
                 <Text>
                     Steps taken in the last 24 hours: {this.state.pastStepCount}
                 </Text>
                 <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
-                <Text>Date from: {this.props.date_from.toString()}</Text>
+                <Text>Status: {this.state.status}</Text>
+                <Text>{new Date(this.props.date_from).toString()}</Text>
+                <Text>{new Date(this.props.date_to).toString()}</Text>
             </View>
         );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, AsyncStorage } from "react-native";
 import Goal from '../../components/Goal.js';
+import Pedometer from "../../components/Pedometer";
 
 
 export default class GoalsScreen extends React.Component {
@@ -11,124 +12,44 @@ export default class GoalsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            goals: []
+            title: '',
+            description: '',
+            step_goal: 0,
+            date_from: '',
+            date_to: '',
+
         };
     };
 
     componentDidMount() {
-        let date_from = new Date('October 10, 2018');
-        let date_to = new Date('October 20, 2018');
-        this.setState({
-            goals: [
+        this.setState(
                     {
-                        "title": 'Goal 1',
-                        "description": 'Description 1',
-                        "tot_steps": 10,
-                        "date_from": date_from,
-                        "date_to": date_to,
-                    },
-                    {
-                        "title": 'Goal 211',
-                        "description": 'Description 2',
-                        "tot_steps": 10,
-                        "date_from": new Date(),
-                        "date_to": new Date(),
-                    },
-                    {
-                        "title": 'Goal 3',
-                        "description": 'Description 3',
-                        "tot_steps": 10,
-                        "date_from": new Date(),
-                        "date_to": new Date(),
-                    },
-                    {
-                        "title": 'Goal 4',
-                        "description": 'Description 4',
-                        "tot_steps": 10,
-                        "date_from": new Date(),
-                        "date_to": new Date(),
-                    },
-                    {
-                        "title": 'Goal 5',
-                        "description": 'Description 5',
-                        "tot_steps": 10,
-                        "date_from": new Date(),
-                        "date_to": new Date(),
-                    },
-            ]
+                        title: 'Goal 1',
+                        description: 'Description 1',
+                        step_goal: 8760,
+                        date_from: 'October 10, 2018 00:00:00',
+                        date_to: 'October 20, 2018 00:00:00',
+                    }
+        );
 
-
-            //goals: [['Goal 1', 'Description 1'],
-            //    ['Goal 2', 'Description 2'],
-            //    ['Goal 3', 'Description 3'],
-            //    ['Goal 4', 'Description 4'],
-            //    ['Goal 5', 'Description 5'],
-            //    ['Goal 6', 'Description 6'],
-            //    ['Goal 7', 'Description 7'],
-            //    ['Goal 8', 'Description 8'],]
-        });
-
-        //AsyncStorage.setItem('goals', JSON.stringify(this.state.goals));
-        //let newGoals = AsyncStorage.getItem('goals');
-        //this.setState({goals: newGoals})
-    };
-
-    async storeItem(key, item) {
-        try {
-            //we want to wait for the Promise returned by AsyncStorage.setItem()
-            //to be resolved to the actual value before returning the value
-            var jsonOfItem = await AsyncStorage.setItem(key, JSON.stringify(item));
-            return jsonOfItem;
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-
-    async retrieveItem(key) {
-        try {
-            const retrievedItem =  await AsyncStorage.getItem(key);
-            return JSON.parse(retrievedItem);
-
-        } catch (error) {
-            console.log(error.message);
-        }
-
-    }
-
-    deleteGoal(i) {
-        let arr = this.state.goals;
-        arr.splice(i, 1);
-
-        this.setState({goals: arr})
-    }
-
-    //eachGoal = (goal, i) => {
-    //    return (<Goal key={i} index={i} title={goal[0]} description={goal[1]} deleteGoal={this.deleteGoal.bind(this)}/>)
-    //};
-
-    eachGoal = (goal, i) => {
-        return (<Goal
-            key={i}
-            index={i}
-            title={goal.title}
-            description={goal.description}
-            tot_steps={goal.tot_steps}
-            date_from={goal.date_from}
-            date_to={goal.date_to}
-            deleteGoal={this.deleteGoal.bind(this)}
-            />)
     };
 
     render() {
         return (
             <View style={styles.container}>
-                <ScrollView style={styles.goalScrollView}>
-                    {
-                        this.state.goals.map(this.eachGoal)
-                    }
+                <ScrollView style={styles.goalView}>
+                    <Text style={styles.goalText}>{this.state.title}</Text>
+                    <Text>{this.state.description}</Text>
+                    <Text>Step Goal: {this.state.step_goal}</Text>
+                    <Text>Date from: {this.state.date_from}</Text>
+                    <Text>Date to: {this.state.date_to}</Text>
+                    <Text>Number of days: {new Date(this.state.date_to).getDate() - new Date(this.state.date_from).getDate()}</Text>
+                    <Pedometer
+                        date_from={this.state.date_from}
+                        date_to={this.state.date_to}
+                        step_goal={this.state.step_goal}
+                    />
                 </ScrollView>
-
-
                 <TouchableOpacity style={styles.addButton} onPress={() => this.props.navigation.navigate('CreateGoal')} >
                     <Text style={styles.addButtonText}>+</Text>
                 </TouchableOpacity>
@@ -163,6 +84,32 @@ const styles = StyleSheet.create({
     addButtonText: {
         color: '#fff',
         fontSize: 24,
+    },
+    goalView: {
+        paddingBottom: 10,
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+    },
+    goalText: {
+        fontSize: 20,
+    },
+    deleteButton: {
+        position: 'absolute',
+        zIndex: 11,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#d42424',
+        padding: 10,
+        top: 10,
+        bottom: 10,
+        right: 10,
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+    },
+    deleteText: {
+        fontSize: 20,
+        color: '#fff'
     },
 
 });

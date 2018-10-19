@@ -33,12 +33,8 @@ export default class Goal extends React.Component {
                 <Text>Date from: {this.props.date_from.toString()}</Text>
                 <Text>Date to: {this.props.date_to.toString()}</Text>
                 <Text>Number of days: {this.props.date_to.getDate() - this.props.date_from.getDate()}</Text>
-
                 <Pedometer updateSteps={this.updateSteps.bind(this)} date_from={this.props.date_from} date_to={this.props.date_to}/>
 
-                <TouchableOpacity style={styles.deleteButton} onPress={() => this.deleteThisGoal(false)} >
-                    <Text style={styles.deleteText}>X</Text>
-                </TouchableOpacity>
             </View>
         )
     }
