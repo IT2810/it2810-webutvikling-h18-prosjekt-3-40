@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
     View,
-    ScrollView,
     Text,
     TextInput,
     StyleSheet,
@@ -10,9 +9,8 @@ import {
 } from 'react-native';
 
 import { ImagePicker, Permissions} from 'expo';
-import {Icon, Thumbnail} from "native-base";
 
-export default class CreateContactScreen extends React.Component {
+export default class CreateContactComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -49,22 +47,16 @@ export default class CreateContactScreen extends React.Component {
         }
     }
 
-    static navigationOptions = ({ navigation }) => {
-        return {
-            headerTitle: 'Contact Info',
-        };
-    };
-
     triggerAddContact(){
         console.log(this.props.navigation.state.params);
         console.log("Over are options");
-        //this.props.navigation.state.params.addMethod();
+        this.props.navigation.state.params.addMethod(this.state.chosenOne);
     }
 
     triggerEditContact(){
-        this.props.navigation.state.params.editMethod.bind(this);
-        //this.props.navigation.state.params.editMethod(this.state.chosenOne);
+        console.log(this.props.navigation.state.params);
         console.log("Over are options");
+        this.props.navigation.state.params.editMethod(this.state.chosenOne);
     }
 
     render()
@@ -72,12 +64,10 @@ export default class CreateContactScreen extends React.Component {
         let { image } = this.state;
 
         return (
-            <ScrollView style={styles.container}>
-
-                <View style={styles.picture}>
-                    <Thumbnail source={{ uri: this.state.image}} large style={styles.thumbnail} />
-                </View>
-
+            <View>
+                <Text style={styles.title}>
+                    {this.state.contact === null? 'New Contact' : "Edit Contact"}
+                </Text>
                 <TextInput
                     style={styles.infoInput}
                     placeholder={
@@ -137,7 +127,7 @@ export default class CreateContactScreen extends React.Component {
                         })
                     }}
                 />
-                <TouchableOpacity onPress= {() => {
+                <TouchableOpacity onPress={() => {
                     let newCon = {
                         firstName: this.state.firstName,
                         lastName: this.state.lastName,
@@ -161,37 +151,18 @@ export default class CreateContactScreen extends React.Component {
                     }}>
                     <Text>Submit</Text>
                 </TouchableOpacity>
-            </ScrollView>
+            </View>
         )
     }}
 
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        flex: 1,
-        paddingTop: 10,
-    },
     title: {
-        fontSize: 35,
-        justifyContent: 'center',
-        textAlign: 'center',
-        paddingBottom: 30,
+        fontSize: 20,
     },
     infoInput: {
-        fontSize: 20,
-        padding: 20,
-        backgroundColor: "#eee",
-    },
-
-    picture: {
-        alignItems: 'center',
-        padding: 20,
-    },
-    thumbnail: {
-        height: 200,
-        width: 200,
-        borderWidth: 5,
-        borderColor: '#999',
-    },
+        height: 40,
+        borderWidth: 2,
+        borderColor: "#fff",
+    }
 });

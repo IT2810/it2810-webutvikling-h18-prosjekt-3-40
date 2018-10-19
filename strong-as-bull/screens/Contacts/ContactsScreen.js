@@ -1,9 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, Button, TouchableOpacity, AsyncStorage} from "react-native";
-import ContactList from '../../components/ContactList.js';
-import userData from '../../components/mock_data.json';
+import ContactList from '../../components/Contacts/ContactList.js';
+import userData from '../../components/Contacts/mock_data.json';
 import {Icon} from 'native-base';
-import {MaterialCommunityIcons} from "../../components/ContactList";
+import {MaterialCommunityIcons} from "../../components/Contacts/ContactList";
 
 export default class ContactsScreen extends React.Component {
 

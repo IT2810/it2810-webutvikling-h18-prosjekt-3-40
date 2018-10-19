@@ -1,11 +1,11 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, Button, TouchableOpacity, AsyncStorage} from "react-native";
 
-import userData from '../../components/mock_data.json';
+import userData from '../../components/Contacts/mock_data.json';
 import {Icon} from 'native-base';
-import {MaterialCommunityIcons} from "../../components/ContactList";
+import {MaterialCommunityIcons} from "../../components/Contacts/ContactList";
 
-import Contact from "../../components/Contact.js";
+import Contact from "../../components/Contacts/Contact.js";
 
 export default class ContactListScreen extends React.Component {
 
@@ -48,7 +48,7 @@ export default class ContactListScreen extends React.Component {
         });
 
         return (
-            <ScrollView >
+            <ScrollView>
                 {contacts}
             </ScrollView>
 

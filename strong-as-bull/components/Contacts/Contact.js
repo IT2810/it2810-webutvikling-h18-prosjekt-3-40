@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert, ListI} from "react-native";
 import {ListItem, Left, Body, Thumbnail, Icon } from 'native-base';
 import Swipeout from "react-native-swipeout";
+import CreateContactComponent from "./CreateContactComponent";
 
 export default class Contact extends React.Component {
 
@@ -23,15 +24,20 @@ export default class Contact extends React.Component {
     }
 
     fireAddContact(newContact){
-        this.state.chosenOne = newContact;
-        this.onAddContact();
+        console.log("HUZZAH:");
+        console.log(newContact);
+        //this.onAddContact();
     }
 
     fireEditContact(updatedContact){
         console.log("NEXT STEP:");
         console.log(updatedContact);
-        this.state.chosenOne = updatedContact;
+        //this.state.chosenOne = updatedContact;
         //this.onEditContact();
+    }
+
+    someFunction() {
+        console.log('This is odd...');
     }
 
     render() {
@@ -41,11 +47,13 @@ export default class Contact extends React.Component {
             right: [
                 {
                     onPress: () => {
+
                         this.props.navigation.navigate('CreateContact', {
                             contact: this.props.val,
                             key: this.props.keyval,
-                            addMethod:  (newContact) => this.props.fireAddContact.bind(this),
-                            editMethod: (updatedContact) => this.props.fireEditContact.bind(this),
+                            addMethod:  () => this.fireAddContact.bind(this),
+                            editMethod: () => this.fireEditContact.bind(this),
+                            someMethod: () => this.someFunction,
 
                         })
                     },
@@ -75,7 +83,8 @@ export default class Contact extends React.Component {
             <View key = {this.props.keyval}>
                 <Swipeout {...swipeSettings}
                           key = {this.props.keyval}
-                          style={styles.swipeOut}>
+                          style={styles.swipeOut}
+                >
 
                     <ListItem key={this.props.keyval}
                               avatar button

@@ -23,9 +23,9 @@ export default class ViewContactScreen extends React.Component{
 
     render(){
         return(
-            <View>
+            <View style={styles.container}>
                 <View style={styles.picture}>
-                    <Thumbnail source={{ uri: this.state.contact.image}} large />
+                    <Thumbnail source={{ uri: this.state.contact.image}} large style={styles.thumbnail} />
                 </View>
                 <Text style={styles.name}>
                     {this.state.contact.first_name} {this.state.contact.last_name}
@@ -44,6 +44,11 @@ export default class ViewContactScreen extends React.Component{
 }
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#fff',
+        flex: 1,
+        paddingTop: 50,
+    },
     name: {
         padding: 10,
         fontSize: 35,
@@ -57,5 +62,11 @@ const styles = StyleSheet.create({
     },
     picture: {
         alignItems: 'center',
+    },
+    thumbnail: {
+        height: 200,
+        width: 200,
+        borderWidth: 5,
+        borderColor: '#999',
     }
 });
