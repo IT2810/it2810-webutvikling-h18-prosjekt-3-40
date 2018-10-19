@@ -9,18 +9,20 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import { ImagePicker, Permissions} from 'expo';
-import {Icon, Thumbnail} from "native-base";
+//Usable if choose photo:
+//import { ImagePicker, Permissions} from 'expo';
+
+import { Thumbnail} from "native-base";
 
 export default class CreateContactScreen extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             email: 'JohnApple@america.com',
-            phoneNumber: '99912345',
+            phone_umber: '99912345',
             company: 'Company',
             image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
             contact: null,
@@ -34,10 +36,10 @@ export default class CreateContactScreen extends React.Component {
         try {
             this.setState({
                 contact: this.props.navigation.state.params.contact,
-                firstName: this.props.navigation.state.params.contact.first_name,
-                lastName: this.props.navigation.state.params.contact.last_name,
+                first_name: this.props.navigation.state.params.contact.first_name,
+                last_name: this.props.navigation.state.params.contact.last_name,
                 email: this.props.navigation.state.params.contact.email,
-                phoneNumber: this.props.navigation.state.params.contact.phone_number,
+                phone_number: this.props.navigation.state.params.contact.phone_number,
                 image: this.props.navigation.state.params.contact.image,
                 company: this.props.navigation.state.params.contact.company,
                 key: this.props.navigation.state.params.key,
@@ -51,20 +53,16 @@ export default class CreateContactScreen extends React.Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-            headerTitle: 'Contact Info',
+            headerTitle: 'Contact Info'
         };
     };
 
     triggerAddContact(){
-        console.log(this.props.navigation.state.params);
-        console.log("Over are options");
-        //this.props.navigation.state.params.addMethod();
+        this.props.navigation.state.params.addMethod(this.state.chosenOne);
     }
 
     triggerEditContact(){
-        this.props.navigation.state.params.editMethod.bind(this);
-        //this.props.navigation.state.params.editMethod(this.state.chosenOne);
-        console.log("Over are options");
+        this.props.navigation.state.params.editMethod(this.state.chosenOne, this.state.key);
     }
 
     render()
@@ -86,7 +84,7 @@ export default class CreateContactScreen extends React.Component {
                     }
                     onChangeText={(input) => {
                         this.setState({
-                            firstName: input,
+                            first_name: input,
                         })
                     }}
                 />
@@ -98,7 +96,7 @@ export default class CreateContactScreen extends React.Component {
                     }
                     onChangeText={(input) => {
                         this.setState({
-                            lastName: input,
+                            last_name: input,
                         })
                     }}
                 />
@@ -110,7 +108,7 @@ export default class CreateContactScreen extends React.Component {
                     }
                     onChangeText={(input) => {
                         this.setState({
-                            phoneNumber: input,
+                            phone_number: input,
                         })
                     }}
                 />
@@ -137,29 +135,27 @@ export default class CreateContactScreen extends React.Component {
                         })
                     }}
                 />
-                <TouchableOpacity onPress= {() => {
+
+                <TouchableOpacity style = {styles.addButton} onPress= {() => {
                     let newCon = {
-                        firstName: this.state.firstName,
-                        lastName: this.state.lastName,
+                        first_name: this.state.first_name,
+                        last_name: this.state.last_name,
                         email: this.state.email,
-                        phoneNumber: this.state.phoneNumber,
+                        phone_number: this.state.phone_number,
                         company: this.state.company,
                         image: this.state.image,
                     };
                     this.state.chosenOne = newCon;
                     if (this.state.contact === null) {
-                        console.log("create new");
-                        console.log(newCon);
                         this.triggerAddContact();
-
                     } else {
-                        console.log("Update old");
-                        console.log(this.state.chosenOne);
                         this.triggerEditContact();
                     }
 
+                    this.props.navigation.navigate('ContactList');
+
                     }}>
-                    <Text>Submit</Text>
+                    <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
             </ScrollView>
         )
@@ -194,4 +190,20 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: '#999',
     },
+    addButton: {
+    position: 'absolute',
+        zIndex: 11,
+        top: 20,
+        right: 20,
+        backgroundColor: '#ccc',
+        width: 50,
+        height: 50,
+        borderRadius: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 8
+    },
+    buttonText: {
+
+    }
 });

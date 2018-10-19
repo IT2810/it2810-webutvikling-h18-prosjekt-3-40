@@ -1,4 +1,3 @@
-import ContactsScreen from "../screens/Contacts/ContactsScreen";
 import ContactListScreen from "../screens/Contacts/ContactListScreen";
 import CreateContactScreen from "../screens/Contacts/CreateContactScreen";
 import ViewContactScreen from "../screens/Contacts/ViewContactScreen";
