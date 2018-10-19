@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import NotesScreen from '../screens/NotesScreen';
 import ContactsStackNavigator from "./ContactsStackNavigator";
 import GoalsScreen from '../screens/GoalsScreen';
+import NotesStackNavigator from "./NotesStackNavigator";
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -27,7 +28,9 @@ HomeStack.navigationOptions = {
 };
 
 const NotesStack = createStackNavigator({
-  Notes: NotesScreen,
+  Notes: NotesStackNavigator,
+},{
+    headerMode: 'none',
 });
 
 NotesStack.navigationOptions = {

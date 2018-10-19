@@ -1,6 +1,6 @@
-import ContactListScreen from "../screens/Contacts/ContactListScreen";
-import CreateContactScreen from "../screens/Contacts/CreateContactScreen";
-import ViewContactScreen from "../screens/Contacts/ViewContactScreen";
+import ContactListScreen from "../screens/contacts/ContactListScreen";
+import CreateContactScreen from "../screens/contacts/CreateContactScreen";
+import ViewContactScreen from "../screens/contacts/ViewContactScreen";
 
 import React from 'react';
 import {createStackNavigator} from 'react-navigation'

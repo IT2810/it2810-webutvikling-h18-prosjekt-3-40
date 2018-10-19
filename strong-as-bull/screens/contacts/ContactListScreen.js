@@ -134,7 +134,9 @@ export default class ContactListScreen extends React.Component {
     fetchData = async () => {
         try {
             let allcontacts = JSON.parse(await AsyncStorage.getItem('allContacts'));
-            this.setState({contacts: allcontacts});
+            if (allcontacts != null) {
+                this.setState({contacts: allcontacts});
+            }
         } catch (error) {
             alert(error);
         }
