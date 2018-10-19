@@ -1,5 +1,5 @@
-import GoalsScreen from "../screens/Goals/GoalsScreen";
-import CreateGoalScreen from "../screens/Goals/CreateGoalScreen";
+import GoalsScreen from "../screens/goals/GoalsScreen";
+import CreateGoalScreen from "../screens/goals/CreateGoalScreen";
 
 import React from 'react';
 import {createStackNavigator} from 'react-navigation'
