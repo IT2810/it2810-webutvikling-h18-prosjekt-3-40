@@ -5,8 +5,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import NotesScreen from '../screens/NotesScreen';
-import ContactsScreen from '../screens/ContactsScreen';
+
+import ContactsStackNavigator from "./ContactsStackNavigator";
 import GoalsStackNavigator from "./GoalsStackNavigation";
+import NotesStackNavigator from "./NotesStackNavigator";
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -27,7 +30,9 @@ HomeStack.navigationOptions = {
 };
 
 const NotesStack = createStackNavigator({
-  Notes: NotesScreen,
+  Notes: NotesStackNavigator,
+},{
+    headerMode: 'none',
 });
 
 NotesStack.navigationOptions = {
@@ -41,7 +46,10 @@ NotesStack.navigationOptions = {
 };
 
 const ContactsStack = createStackNavigator({
-  Contacts: ContactsScreen,
+    Contacts: ContactsStackNavigator,
+    //CreateContact: CreateContactScreen,
+},{
+    headerMode: 'none',
 });
 
 ContactsStack.navigationOptions = {
