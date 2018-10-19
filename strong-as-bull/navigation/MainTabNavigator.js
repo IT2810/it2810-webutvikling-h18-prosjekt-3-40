@@ -5,9 +5,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import NotesScreen from '../screens/NotesScreen';
+
 import ContactsStackNavigator from "./ContactsStackNavigator";
-import GoalsScreen from '../screens/GoalsScreen';
+import GoalsStackNavigator from "./GoalsStackNavigation";
 import NotesStackNavigator from "./NotesStackNavigator";
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -61,7 +63,9 @@ ContactsStack.navigationOptions = {
 };
 
 const GoalsStack = createStackNavigator({
-    Goals: GoalsScreen,
+    Goals: GoalsStackNavigator,
+},{
+    headerMode: 'none',
 });
 
 GoalsStack.navigationOptions = {
