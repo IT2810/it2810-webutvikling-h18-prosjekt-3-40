@@ -12,6 +12,9 @@ export default class PedometerSensor extends React.Component {
 
     constructor(props) {
         super(props);
+        // pastStepCount is the amount of steps so far today.
+        // currentStepCount is the amount of steps since the app is opened.
+        // The two added gives the total steps today.
         this.state = {
             isPedometerAvailable: "checking",
             pastStepCount: 0,
@@ -30,7 +33,8 @@ export default class PedometerSensor extends React.Component {
     }
 
     _subscribe = () => {
-
+        // watchStepCounnt subscribes to pedometer updates.
+        //So the code is run whenever Core Motion (iOS) or Google Fit (Android) updates
         this._subscription = Pedometer.watchStepCount(result => {
             this.setState({
                 currentStepCount: result.steps,
@@ -49,6 +53,8 @@ export default class PedometerSensor extends React.Component {
 
         });
 
+        //This is function checks if Pedometer is available for the device.
+        //The isPedometerAvailable is not rendered in the app but was used a lot for debugging
         Pedometer.isAvailableAsync().then(
             result => {
                 this.setState({
@@ -62,10 +68,13 @@ export default class PedometerSensor extends React.Component {
             }
         );
 
+        // new Date with no arguments sets the variables to the current date and time
         let start = new Date();
         let end = new Date();
+        //Sets the time to 00:00:00 so the steps will be counted for the whole day
         start.setHours(0,0,0);
 
+        //This function sets the step count so far today.
         Pedometer.getStepCountAsync(start, end).then(
             result => {
                 this.setState({
@@ -99,6 +108,7 @@ export default class PedometerSensor extends React.Component {
     };
 
     render() {
+        // Progress.Pie is a 3rd party component from https://github.com/oblador/react-native-progress
         return (
             <View style={styles.container}>
                 <Text>Current steps: {this.state.currentStepCount + this.state.pastStepCount} / {this.props.step_goal}</Text>
