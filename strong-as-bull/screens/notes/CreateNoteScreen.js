@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-    View,
     ScrollView,
     Text,
     TextInput,
@@ -9,10 +8,9 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-
-
 export default class CreateNoteScreen extends React.Component {
 
+//Initiates a note
     constructor(props) {
         super(props);
         this.state = {
@@ -25,6 +23,7 @@ export default class CreateNoteScreen extends React.Component {
 
     }
 
+//Sets note values
     componentDidMount() {
         try {
             this.setState({
@@ -54,6 +53,7 @@ export default class CreateNoteScreen extends React.Component {
         this.props.navigation.state.params.editMethod(this.state.chosenOne, this.state.key);
     }
 
+//Renders how the create note screen is viewed
     render() {
         return (
             <ScrollView style={styles.container}>

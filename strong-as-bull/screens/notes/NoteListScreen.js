@@ -8,6 +8,7 @@ import Swipeout from "react-native-swipeout";
 
 export default class NoteListScreen extends React.Component {
 
+
     static navigationOptions = ({ navigation }) => {
         return {
             headerTitle: 'Notes',
@@ -41,7 +42,7 @@ export default class NoteListScreen extends React.Component {
             editMethod: this.editNote.bind(this),
         })
     }
-
+//Renders how the note list screen is viewed with swipeout function implemented
     render() {
 
         let notes = this.state.notes.map((val, key) => {

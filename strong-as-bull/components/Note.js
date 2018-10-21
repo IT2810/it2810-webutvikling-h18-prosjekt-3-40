@@ -3,15 +3,12 @@ import {StyleSheet, Text, View} from "react-native";
 import {ListItem, Left, Body, Thumbnail } from 'native-base';
 
 export default class Note extends React.Component {
-
+//Render how a note is viewed
     render() {
-
-
         return (
             <View key = {this.props.keyval}>
                 <ListItem key={this.props.keyval}
                           onPress={()=> this.props.navigation.navigate('ViewNote', {note: this.props.val}) }>
-
                     <Body>
                     <Text style = {styles.title}>
                         {this.props.val.title === undefined ? 'No title' : this.props.val.title}

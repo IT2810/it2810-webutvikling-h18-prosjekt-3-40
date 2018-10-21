@@ -2,6 +2,7 @@ import React from 'react';
 
 import {View, Text, StyleSheet } from 'react-native';
 
+
 export default class ViewNoteScreen extends React.Component{
 
     constructor(props) {
@@ -11,7 +12,7 @@ export default class ViewNoteScreen extends React.Component{
         };
     }
 
-
+//Renders how a note looks in the view note screen
     render(){
         return(
             <View style={styles.container}>
