@@ -7,6 +7,8 @@ import initialData from './mock_data.json';
 
 export default class ContactListScreen extends React.Component {
 
+
+    //Sets options for navigation through header. Sends appropriate methods to "create new contact" screen
      static navigationOptions = ({ navigation }) => {
         return {
             headerTitle: 'Contacts',
@@ -24,7 +26,7 @@ export default class ContactListScreen extends React.Component {
         };
     };
 
-
+    //the constructor sets the contacts list to an empty list
     constructor(props) {
         super(props);
         this.state = {
@@ -32,6 +34,9 @@ export default class ContactListScreen extends React.Component {
         };
     }
 
+    //Handles initial data loading. Also sends appropriate methods to the static navigatoroption.
+    //This was necessary to be able to have the plus button in the header. This could have been solved
+    //by simply adding a button anywhere else on the screen, but I liked the placement in the header
     componentDidMount(){
         //Fetches data if there is any, else sets 30 dummy contacts, then saves with AsyncStorage
         this.fetchData();
@@ -49,6 +54,13 @@ export default class ContactListScreen extends React.Component {
 
 
     render() {
+
+
+        //This method creates the list of contacts via the map-function.
+        //What catches the eye in this section is the settings for the swipeout component.
+        //This location was chosen because the relevant methods and variables are readily availible (being the
+        //add- and edit- method, the key and the value to each contact).
+
         let contacts = this.state.contacts.map((val, key) => {
             return <Swipeout{ ... {
                                     autoClose: true,
@@ -98,6 +110,7 @@ export default class ContactListScreen extends React.Component {
 
         });
 
+        //returns a scrollview with the aforementioned list of contacts, which was created over this
         return (
             <ScrollView>
                 {contacts}
@@ -106,6 +119,8 @@ export default class ContactListScreen extends React.Component {
         );
     }
 
+    //Copies the contactlist from the state, pushes a new contact to the list, sets the new state and
+    //Saves using AsyncStorage
     addContact(newContact) {
         let newList = this.state.contacts;
         newList.push(newContact);
@@ -116,18 +131,26 @@ export default class ContactListScreen extends React.Component {
     }
 
 
+    //Copies the contactlist from the state, edits one entry the list (based on the key), sets the new state and
+    //Saves using AsyncStorage
     editContact(newContact, key){
         let newList = this.state.contacts;
         newList[key] = newContact;
-        this.setState({contacts: newList});
+        this.setState({
+            contacts: newList,
+        });
         this.saveData();
     }
 
+    //Saves the current contactlist (as one list object) by stringifying it and saving it to AsyncStorage
     saveData() {
         let allContacts = JSON.stringify(this.state.contacts);
         AsyncStorage.setItem('allContacts', allContacts);
     };
 
+    //Tries to fetch the contactlist from ASyncStorage. If there is no data (meaning nothing had been saved previously),
+    //The method does nothing. This is so the list can easily be filled with mock data at first startup.
+    //If there is data to be fetched, it fills the state:
     fetchData = async () => {
         try {
             const allContacts = JSON.parse(await AsyncStorage.getItem('allContacts'));
@@ -139,6 +162,9 @@ export default class ContactListScreen extends React.Component {
         }
     };
 
+
+    //Copies the contactlist from the state, removes one item in the list (by key), sets the new state and
+    //Saves using AsyncStorage
     deleteContact(key) {
         let newList = this.state.contacts;
         newList.splice(key, 1);
