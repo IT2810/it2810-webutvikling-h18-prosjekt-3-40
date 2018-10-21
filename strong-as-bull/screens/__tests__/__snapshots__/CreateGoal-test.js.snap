@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateContact snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+      "padding": 20,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Number of Steps:
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="10000"
+    placeholderTextColor="black"
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "backgroundColor": "#cccccc",
+        "borderColor": "#ededed",
+        "borderWidth": 1,
+        "color": "#000",
+        "marginBottom": 10,
+        "padding": 5,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#E91E63",
+        "borderRadius": 10,
+        "bottom": 100,
+        "elevation": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "opacity": 1,
+        "position": "absolute",
+        "width": 300,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 24,
+        }
+      }
+    >
+      Confirm
+    </Text>
+  </View>
+</View>
+`;

@@ -1,11 +1,11 @@
 import 'react-native';
 import React from 'react';
-import ContactListScreen from '../../screens/contacts/ContactListScreen.js';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import NoteListScreen from '../notes/NoteListScreen.js';
+import ShallowRenderer from "react-test-renderer/shallow";
 //import {ScrollView} from "react-native";
 
 const renderer = new ShallowRenderer();
-renderer.render(<ContactListScreen />);
+renderer.render(<NoteListScreen />);
 const result = renderer.getRenderOutput();
 
 
