@@ -1,10 +1,7 @@
 import React from 'react';
 
-import {
-    View,
-    Text,
-    StyleSheet,
-} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
 import {Thumbnail} from "native-base";
 
 export default class ViewContactScreen extends React.Component{
