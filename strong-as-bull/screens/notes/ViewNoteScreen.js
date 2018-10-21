@@ -5,7 +5,7 @@ import {
     Text,
     StyleSheet,
 } from 'react-native';
-import {Thumbnail} from "native-base";
+
 
 export default class ViewNoteScreen extends React.Component{
 
@@ -16,7 +16,7 @@ export default class ViewNoteScreen extends React.Component{
         };
     }
 
-
+//Renders how a note looks in the view note screen
     render(){
         return(
             <View style={styles.container}>
