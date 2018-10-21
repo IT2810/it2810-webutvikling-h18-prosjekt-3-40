@@ -1,22 +1,27 @@
 import 'react-native';
 import React from 'react';
 import ContactListScreen from '../../screens/contacts/ContactListScreen.js';
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import {ScrollView} from "react-native";
 
-
-//Fails due to navigator or Image:
-
-/*it('ContactListScreen snapshot', () => {
-    const snap = renderer.create(
+/*
+it('function and state test care', () => {
+    let listInstance = renderer.create(
         <ContactListScreen/>
-    ).toJSON();
+    ).getInstance();
 
-    expect(snap).toMatchSnapshot();
+    listInstance.constructor();
 
-});*/
+    expect(listInstance.state.contacts.length).toEqual(0);
+});
+*/
+
+const renderer = new ShallowRenderer();
+renderer.render(<ContactListScreen />);
+const result = renderer.getRenderOutput();
 
 
-//To not add additional fail:
-it('works', () => {
-    expect(1).toBe(1);
+it('renders', () => {
+    expect(result.type).toBe('div');
+    expect(result.props.children).toEqual(<ScrollView>{[]}</ScrollView>);
 });

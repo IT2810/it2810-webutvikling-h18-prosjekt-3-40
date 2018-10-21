@@ -34,7 +34,6 @@ export default class NoteListScreen extends React.Component {
     }
 
     componentDidMount(){
-        //DUMMY DATA
         this.fetchData();
         this.props.navigation.setParams ({
             addMethod: this.addNote.bind(this),

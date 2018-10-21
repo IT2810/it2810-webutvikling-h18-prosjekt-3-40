@@ -11,9 +11,9 @@ export default class ViewContactScreen extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
+        this.setState({
             contact: this.props.navigation.state.params.contact,
-        };
+        });
     }
 
     /*componentDidMount(){

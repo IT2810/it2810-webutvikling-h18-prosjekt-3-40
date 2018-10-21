@@ -1,10 +1,11 @@
 import React from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity, AsyncStorage, Alert} from "react-native";
+import {View, ScrollView, StyleSheet, TouchableOpacity, AsyncStorage, Alert} from "react-native";
 
 import {Icon} from 'native-base';
 
 import Contact from "../../components/Contacts/Contact.js";
 import Swipeout from "react-native-swipeout";
+import initialData from "../../components/Contacts/mock_data.json";
 
 export default class ContactListScreen extends React.Component {
 
@@ -34,12 +35,11 @@ export default class ContactListScreen extends React.Component {
     }
 
     componentDidMount(){
-        //DUMMY DATA
-        if (this.state.contacts === []){
-
+        //Fetches data if there is any, else sets ≈ 30 dummy contacts, then saves with asyncstorage.
+        this.fetchData();
+        if (this.state.contacts.length === 0) {
             this.setState({contacts: initialData});
-        } else {
-            this.fetchData();
+            this.saveData();
         }
 
         this.props.navigation.setParams ({
@@ -102,10 +102,11 @@ export default class ContactListScreen extends React.Component {
         });
 
         return (
-            <ScrollView>
-                {contacts}
-            </ScrollView>
-
+            <div>
+                <ScrollView>
+                    {contacts}
+                </ScrollView>
+            </div>
         );
     }
 
