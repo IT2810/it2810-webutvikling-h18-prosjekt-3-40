@@ -9,6 +9,7 @@ import {Thumbnail} from "native-base";
 
 export default class ViewContactScreen extends React.Component{
 
+    //The contact data is passed through the navigator
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +17,7 @@ export default class ViewContactScreen extends React.Component{
         };
     }
 
+    //Creates the info page from the passed data
     render(){
         return(
             <View style={styles.container}>
