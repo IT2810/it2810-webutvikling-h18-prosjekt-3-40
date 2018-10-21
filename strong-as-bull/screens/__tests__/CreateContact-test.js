@@ -22,7 +22,7 @@ it('test constructor and componentDidMount', () => {
         first_name: '',
         last_name: '',
         email: 'JohnApple@america.com',
-        phone_nqumber: '99912345',
+        phone_number: '99912345',
         company: 'Company',
         image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
         contact: null,
