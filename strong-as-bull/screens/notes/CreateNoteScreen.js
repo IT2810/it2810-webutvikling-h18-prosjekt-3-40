@@ -83,21 +83,25 @@ export default class CreateNoteScreen extends React.Component {
                     }}
                 />
 
-                <TouchableOpacity style = {styles.addButton} onPress= {() => {
-                    let newNote = {
-                        title: this.state.title,
-                        description: this.state.description,
-                    };
-                    this.state.chosenOne = newNote;
-                    if (this.state.note === null) {
-                        this.triggerAddNote();
+                <TouchableOpacity style = {styles.addButton} onPress={() => {
+                    if (this.state.description === '') {
+                        alert('Please fill in description')
                     } else {
-                        this.triggerEditNote();
+                        let newNote = {
+                            title: this.state.title,
+                            description: this.state.description,
+                        };
+                        this.state.chosenOne = newNote;
+                        if (this.state.note === null) {
+                            this.triggerAddNote();
+                        } else {
+                            this.triggerEditNote();
+                        }
+
+                        this.props.navigation.navigate('NoteList');
                     }
-
-                    this.props.navigation.navigate('NoteList');
-
-                }}>
+                    }
+                }>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
             </ScrollView>

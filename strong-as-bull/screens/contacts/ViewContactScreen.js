@@ -1,14 +1,12 @@
 import React from 'react';
 
-import {
-    View,
-    Text,
-    StyleSheet,
-} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
 import {Thumbnail} from "native-base";
 
 export default class ViewContactScreen extends React.Component{
 
+    //The contact data is passed through the navigator
     constructor(props) {
         super(props);
         this.state = {
@@ -16,11 +14,7 @@ export default class ViewContactScreen extends React.Component{
         };
     }
 
-    /*componentDidMount(){
-        this.setState({contact: this.props.navigation.state.params.contact});
-    }*/
-
-
+    //Creates the info page from the passed data
     render(){
         return(
             <View style={styles.container}>

@@ -10,19 +10,23 @@ import {
 } from 'react-native';
 
 //Usable if choose photo:
+//This functionality was later scrapped as we ran into issues with permissions:
 //import { ImagePicker, Permissions} from 'expo';
 
 import { Thumbnail} from "native-base";
 
 export default class CreateContactScreen extends React.Component {
 
+    //Sets standard data which is set when fields are left empty. This would of course not be
+    //practical in an actual contacts list, but for demo purposes it proves quite useful as you can add contacts
+    //without putting in all the data
     constructor(props) {
         super(props);
         this.state = {
             first_name: '',
             last_name: '',
             email: 'JohnApple@america.com',
-            phone_umber: '99912345',
+            phone_number: '99912345',
             company: 'Company',
             image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
             contact: null,
@@ -32,6 +36,11 @@ export default class CreateContactScreen extends React.Component {
 
     }
 
+    //This tries to fetch data from the navigator so it can be set as default values. This is used
+    //for the edit contact functionality, where the stored data is used as presets, which allows
+    //the user to only change the fields that needs to be changed.
+    //For the create new functionality there is no props.navigation.state.params.contact, and no
+    //pre-stored data should be loaded. To emphasize this, the contact is (somewhat redundantly) set to null.
     componentDidMount() {
         try {
             this.setState({
@@ -57,18 +66,26 @@ export default class CreateContactScreen extends React.Component {
         };
     };
 
+    //This triggers the addContact function in ContactListScreen.
+    //The contact to be added is the chosenOne in state (which is set later in this page)
     triggerAddContact(){
         this.props.navigation.state.params.addMethod(this.state.chosenOne);
     }
 
+    //This triggers the editContact function in ContactListScreen
+    //The contact to be edited is the chosenOne in state (which is set later in this page)
     triggerEditContact(){
         this.props.navigation.state.params.editMethod(this.state.chosenOne, this.state.key);
     }
 
     render()
     {
-        let { image } = this.state;
 
+        //Creates the various input fields. At the bottom, the 'submit' button is defined
+        //It gets the data from the state (which is what the user has given as input, ot the standard
+        //data put in the state at the beginning), and fires either the add- or edit-method, depending
+        //on a contact has been set (and as such should be edited) or not. This will only
+        //happen if the user has given both the first and last name
         return (
             <ScrollView style={styles.container}>
 
@@ -136,25 +153,31 @@ export default class CreateContactScreen extends React.Component {
                     }}
                 />
 
-                <TouchableOpacity style = {styles.addButton} onPress= {() => {
-                    let newCon = {
-                        first_name: this.state.first_name,
-                        last_name: this.state.last_name,
-                        email: this.state.email,
-                        phone_number: this.state.phone_number,
-                        company: this.state.company,
-                        image: this.state.image,
-                    };
-                    this.state.chosenOne = newCon;
-                    if (this.state.contact === null) {
-                        this.triggerAddContact();
+                <TouchableOpacity style = {styles.addButton} onPress={() => {
+                    if (this.state.first_name === '' || this.state.last_name === '') {
+                        alert('Please enter at least first and last name')
                     } else {
-                        this.triggerEditContact();
+                        let newCon = {
+                            first_name: this.state.first_name,
+                            last_name: this.state.last_name,
+                            email: this.state.email,
+                            phone_number: this.state.phone_number,
+                            company: this.state.company,
+                            image: this.state.image,
+                        };
+                        this.state.chosenOne = newCon;
+
+                        if (this.state.contact === null) {
+                            this.triggerAddContact();
+                        } else {
+                            this.triggerEditContact();
+                        }
+
+                        this.props.navigation.navigate('ContactList');
+
                     }
-
-                    this.props.navigation.navigate('ContactList');
-
-                    }}>
+                }
+                }>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
             </ScrollView>

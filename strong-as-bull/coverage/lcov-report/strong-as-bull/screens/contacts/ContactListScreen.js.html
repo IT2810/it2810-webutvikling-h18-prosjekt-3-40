@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for strong-as-bull/screens/contacts/ContactListScreen.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">strong-as-bull/screens/contacts</a> ContactListScreen.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.89% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.89% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/36</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity, AsyncStorage, Alert} from "react-native";
+&nbsp;
+import {Icon} from 'native-base';
+&nbsp;
+import Contact from "../../components/Contacts/Contact.js";
+import Swipeout from "react-native-swipeout";
+import initialData from "../../components/Contacts/mock_data.json";
+&nbsp;
+export default class ContactListScreen extends React.Component {
+&nbsp;
+     static navigationOptions = <span class="fstat-no" title="function not covered" >({</span> navigation }) =&gt; {
+<span class="cstat-no" title="statement not covered" >        return {</span>
+            headerTitle: 'Contacts',
+            headerRight: (
+                &lt;TouchableOpacity onPress={<span class="fstat-no" title="function not covered" >()</span>=&gt; {
+<span class="cstat-no" title="statement not covered" >                    navigation.navigate('CreateContact',{</span>
+                        addMethod: navigation.state.params.addMethod,
+                        editMethod: navigation.state.params.editMethod,
+                    });
+                }}&gt;
+                    &lt;Icon name={'ios-add-outline'} style={styles.newContactButton}/&gt;
+                &lt;/TouchableOpacity&gt;
+&nbsp;
+            ),
+        };
+    };
+&nbsp;
+&nbsp;
+    constructor(props) {
+        super(props);
+        this.state = {
+            contacts: [],
+        };
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    co</span>mponentDidMount(){
+        //Fetches data if there is any, else sets ≈ 30 dummy contacts, then saves with asyncstorage.
+<span class="cstat-no" title="statement not covered" >        this.fetchData();</span>
+<span class="cstat-no" title="statement not covered" >        if (this.state.contacts.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            this.setState({contacts: initialData});</span>
+<span class="cstat-no" title="statement not covered" >            this.saveData();</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        this.props.navigation.setParams ({</span>
+            addMethod: this.addContact.bind(this),
+            editMethod: this.editContact.bind(this),
+        })
+    }
+&nbsp;
+&nbsp;
+&nbsp;
+    render() {
+&nbsp;
+        let contacts = this.state.contacts.map(<span class="fstat-no" title="function not covered" >(v</span>al, key) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return &lt;Swipeout{ ... {</span>
+                                    autoClose: true,
+                                    right: [
+                                        {
+                                            onPress: <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                                                this.props.navigation.push('CreateContact', {</span>
+                                                    contact: val,
+                                                    key: key,
+                                                    addMethod: this.addContact.bind(this),
+                                                    editMethod: this.editContact.bind(this),
+&nbsp;
+                                                })
+                                            },
+                                            text: "Edit", type: 'edit',
+                                        },
+                                        {
+                                            onPress: <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                                                Alert.alert(</span>
+                                                    'Alert',
+                                                    'Are you sure you want to delete?',
+                                                    [
+                                                        {text: 'No', onPress: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >console.log('Cancel Pressed'),</span> style: 'cancel'},
+                                                        {text: 'Yes', onPress: <span class="fstat-no" title="function not covered" >()</span> =&gt;(<span class="cstat-no" title="statement not covered" >this.deleteContact(key))</span>}
+&nbsp;
+                                                    ],
+                                                    {cancelable: true}
+&nbsp;
+                                                );
+                                            },
+                                            text: "Delete", type: 'delete',
+                                        },
+&nbsp;
+                                    ],
+&nbsp;
+                                }
+                            }
+                            key = {key}
+                            style={styles.swipeOut}&gt;
+                    &lt;Contact
+                    key = {key}
+                    keyval = {key}
+                    val = {val}
+                    navigation={ this.props.navigation }
+                    /&gt;
+            &lt;/Swipeout&gt;
+&nbsp;
+        });
+&nbsp;
+        return (
+            &lt;div&gt;
+                &lt;ScrollView&gt;
+                    {contacts}
+                &lt;/ScrollView&gt;
+            &lt;/div&gt;
+        );
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    ad</span>dContact(newContact) {
+        let newList = <span class="cstat-no" title="statement not covered" >this.state.contacts;</span>
+<span class="cstat-no" title="statement not covered" >        newList.push(newContact);</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({</span>
+            contacts: newList,
+        });
+<span class="cstat-no" title="statement not covered" >        this.saveData();</span>
+    }
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >    ed</span>itContact(newContact, key){
+        let newList = <span class="cstat-no" title="statement not covered" >this.state.contacts;</span>
+<span class="cstat-no" title="statement not covered" >        newList[key] = newContact;</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({contacts: newList});</span>
+<span class="cstat-no" title="statement not covered" >        this.saveData();</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    sa</span>veData() {
+        let allContacts = <span class="cstat-no" title="statement not covered" >JSON.stringify(this.state.contacts);</span>
+<span class="cstat-no" title="statement not covered" >        AsyncStorage.setItem('allContacts', allContacts);</span>
+    };
+&nbsp;
+    fetchData = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+<span class="cstat-no" title="statement not covered" >        try {</span>
+            let allcontacts = <span class="cstat-no" title="statement not covered" >JSON.parse(await AsyncStorage.getItem('allContacts'));</span>
+<span class="cstat-no" title="statement not covered" >            if (allcontacts != null) {</span>
+<span class="cstat-no" title="statement not covered" >                this.setState({contacts: allcontacts});</span>
+            }
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            alert(error);</span>
+        }
+    };
+&nbsp;
+<span class="fstat-no" title="function not covered" >    de</span>leteContact(key) {
+        let newList = <span class="cstat-no" title="statement not covered" >this.state.contacts;</span>
+<span class="cstat-no" title="statement not covered" >        newList.splice(key, 1);</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({</span>
+            contacts: newList,
+        });
+<span class="cstat-no" title="statement not covered" >        this.saveData();</span>
+    };
+&nbsp;
+&nbsp;
+}
+&nbsp;
+&nbsp;
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 15,
+        backgroundColor: '#fff',
+    },
+    newContactButton: {
+        marginRight: 20,
+    },
+    swipeOut: {
+        backgroundColor: '#fff'
+    },
+});
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Oct 21 2018 17:57:59 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

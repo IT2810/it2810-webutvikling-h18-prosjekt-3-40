@@ -4,8 +4,12 @@ import {ListItem, Left, Body, Thumbnail } from 'native-base';
 
 export default class Contact extends React.Component {
 
+    //This code creates what is shown in every single item in the contactList.
+    //When a contact is pressed, the app navigates to an overview of that contact
+    //with that contacts data (ViewContact). The data shown in that view is passed from the contact component.
+    //Were this not a demo app, more tie would have been spent on stying. Being a demo, we did not feel
+    //the urge to give it much thought. For an example of usage of styles, see various other pages in this project.
     render() {
-
 
         return (
             <View key = {this.props.keyval}>
