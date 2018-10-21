@@ -9,10 +9,6 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-//Usable if choose photo:
-//This functionality was later scrapped as we ran into issues with permissions:
-//import { ImagePicker, Permissions} from 'expo';
-
 import { Thumbnail} from "native-base";
 
 export default class CreateContactScreen extends React.Component {
