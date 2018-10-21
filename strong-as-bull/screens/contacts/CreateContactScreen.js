@@ -22,7 +22,7 @@ export default class CreateContactScreen extends React.Component {
             first_name: '',
             last_name: '',
             email: 'JohnApple@america.com',
-            phone_umber: '99912345',
+            phone_number: '99912345',
             company: 'Company',
             image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
             contact: null,
@@ -136,25 +136,31 @@ export default class CreateContactScreen extends React.Component {
                     }}
                 />
 
-                <TouchableOpacity style = {styles.addButton} onPress= {() => {
-                    let newCon = {
-                        first_name: this.state.first_name,
-                        last_name: this.state.last_name,
-                        email: this.state.email,
-                        phone_number: this.state.phone_number,
-                        company: this.state.company,
-                        image: this.state.image,
-                    };
-                    this.state.chosenOne = newCon;
-                    if (this.state.contact === null) {
-                        this.triggerAddContact();
+                <TouchableOpacity style = {styles.addButton} onPress={() => {
+                    if (this.state.first_name === '' || this.state.last_name === '') {
+                        alert('Please enter at least first and last name')
                     } else {
-                        this.triggerEditContact();
+                        let newCon = {
+                            first_name: this.state.first_name,
+                            last_name: this.state.last_name,
+                            email: this.state.email,
+                            phone_number: this.state.phone_number,
+                            company: this.state.company,
+                            image: this.state.image,
+                        };
+                        this.state.chosenOne = newCon;
+
+                        if (this.state.contact === null) {
+                            this.triggerAddContact();
+                        } else {
+                            this.triggerEditContact();
+                        }
+
+                        this.props.navigation.navigate('ContactList');
+
                     }
-
-                    this.props.navigation.navigate('ContactList');
-
-                    }}>
+                }
+                }>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
             </ScrollView>
