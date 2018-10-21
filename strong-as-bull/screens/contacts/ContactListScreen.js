@@ -1,10 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet, TouchableOpacity, AsyncStorage, Alert} from "react-native";
-
 import {Icon} from 'native-base';
-
 import Contact from "../../components/Contacts/Contact.js";
 import Swipeout from "react-native-swipeout";
+import initialData from './mock_data.json';
 
 export default class ContactListScreen extends React.Component {
 
@@ -39,12 +38,11 @@ export default class ContactListScreen extends React.Component {
     //This was necessary to be able to have the plus button in the header. This could have been solved
     //by simply adding a button anywhere else on the screen, but I liked the placement in the header
     componentDidMount(){
-        //DUMMY DATA
-        if (this.state.contacts === []){
-
-            this.setState({contacts: initialData});
-        } else {
-            this.fetchData();
+        //Fetches data if there is any, else sets 30 dummy contacts, then saves with AsyncStorage
+        this.fetchData();
+        if (this.state.contacts.length === 0){
+            this.state.contacts = initialData;
+            this.saveData();
         }
 
         this.props.navigation.setParams ({
@@ -57,10 +55,12 @@ export default class ContactListScreen extends React.Component {
 
     render() {
 
+
         //This method creates the list of contacts via the map-function.
         //What catches the eye in this section is the settings for the swipeout component.
         //This location was chosen because the relevant methods and variables are readily availible (being the
         //add- and edit- method, the key and the value to each contact).
+
         let contacts = this.state.contacts.map((val, key) => {
             return <Swipeout{ ... {
                                     autoClose: true,
@@ -153,9 +153,9 @@ export default class ContactListScreen extends React.Component {
     //If there is data to be fetched, it fills the state:
     fetchData = async () => {
         try {
-            let allcontacts = JSON.parse(await AsyncStorage.getItem('allContacts'));
-            if (allcontacts != null) {
-                this.setState({contacts: allcontacts});
+            const allContacts = JSON.parse(await AsyncStorage.getItem('allContacts'));
+            if (allContacts != null) {
+                this.setState({contacts: allContacts});
             }
         } catch (error) {
             alert(error);
