@@ -15,10 +15,12 @@ export default class GoalsScreen extends React.Component {
         };
     };
 
+
     //Sets the default step goal
     componentDidMount() {
         this.setState({step_goal: 10000});
     };
+
 
     //This function is passed in the navigation property to set the step_goal state from CreateGoalScreen
     setGoal(new_step_goal){

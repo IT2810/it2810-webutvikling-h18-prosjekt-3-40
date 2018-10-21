@@ -72,7 +72,7 @@ export default class ContactListScreen extends React.Component {
                                             onPress: () => {
                                                 Alert.alert(
                                                     'Alert',
-                                                    'Are you sure you want to delete?',
+                                                    'Are you sure you want to delete ' + val.first_name.toString() + "?",
                                                     [
                                                         {text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
                                                         {text: 'Yes', onPress: () =>(this.deleteContact(key))}

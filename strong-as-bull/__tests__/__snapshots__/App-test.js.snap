@@ -109,7 +109,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                       "bottom": 0,
                       "left": 0,
                       "opacity": 1,
-                      "paddingTop": 64,
+
+                      "paddingTop": 0,
+
                       "position": "absolute",
                       "right": 0,
                       "shadowColor": "black",
@@ -136,7 +138,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                       Object {
                         "backgroundColor": "#fff",
                         "flex": 1,
-                        "paddingTop": 50,
+
                       }
                     }
                   >
@@ -144,57 +146,70 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+
+                          "backgroundColor": "#fbfbfb",
+                          "bottom": 0,
+                          "left": 0,
+                          "paddingVertical": 20,
+                          "position": "absolute",
+                          "right": 0,
+                          "shadowColor": "black",
+                          "shadowOffset": Object {
+                            "height": -3,
+                          },
+                          "shadowOpacity": 0.1,
+                          "shadowRadius": 3,
                         }
                       }
                     >
-                      <Image
-                        large={true}
-                        source={1}
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "rgba(96,100,109, 1)",
+                            "fontSize": 17,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        This is a tab bar. You can edit it in:
+                      </Text>
+                      <View
                         style={
                           Array [
                             Object {
-                              "borderRadius": 40,
-                              "height": 80,
-                              "width": 80,
+                              "backgroundColor": "rgba(0,0,0,0.05)",
+                              "borderRadius": 3,
+                              "paddingHorizontal": 4,
                             },
                             Object {
-                              "height": 200,
-                              "width": 200,
+                              "marginTop": 5,
                             },
                           ]
                         }
-                        virtual={undefined}
-                      />
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "rgba(96,100,109, 0.8)",
+                              },
+                              Object {
+                                "fontFamily": "space-mono",
+                              },
+                            ]
+                          }
+                        >
+                          navigation/MainTabNavigator.js
+                        </Text>
+                      </View>
                     </View>
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "fontSize": 20,
-                          "padding": 10,
-                          "textAlign": "center",
-                        }
-                      }
-                    >
-                      Welcome to
-                    </Text>
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "fontSize": 35,
-                          "justifyContent": "center",
-                          "padding": 10,
-                          "textAlign": "center",
-                        }
-                      }
-                    >
-                      Strong as Bull!
-                    </Text>
+
                   </View>
                 </View>
               </View>
@@ -217,7 +232,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                       "backgroundColor": "#FFF",
                       "transform": Array [
                         Object {
-                          "translateX": 0,
+
+                          "translateX": -750,
+
                         },
                       ],
                     }
@@ -246,58 +263,9 @@ exports[`App snapshot renders the root without loading screen 1`] = `
                           "flex": 1,
                         }
                       }
-                    >
-                      <View
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "flexDirection": "row",
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                      >
-                        <View
-                          collapsable={undefined}
-                          pointerEvents="box-none"
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "bottom": 0,
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "left": 0,
-                              "opacity": 1,
-                              "position": "absolute",
-                              "right": 0,
-                              "top": 0,
-                            }
-                          }
-                        >
-                          <Text
-                            accessibilityTraits="header"
-                            accessible={false}
-                            allowFontScaling={true}
-                            collapsable={undefined}
-                            ellipsizeMode="tail"
-                            numberOfLines={1}
-                            onLayout={[Function]}
-                            style={
-                              Object {
-                                "color": "rgba(0, 0, 0, .9)",
-                                "fontSize": 17,
-                                "fontWeight": "600",
-                                "marginHorizontal": 16,
-                                "textAlign": "center",
-                              }
-                            }
-                          />
-                        </View>
-                      </View>
-                    </View>
+
+                    />
+
                   </View>
                 </View>
               </View>

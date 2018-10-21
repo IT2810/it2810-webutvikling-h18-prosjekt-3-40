@@ -16,11 +16,6 @@ export default class ViewContactScreen extends React.Component{
         });
     }
 
-    /*componentDidMount(){
-        this.setState({contact: this.props.navigation.state.params.contact});
-    }*/
-
-
     render(){
         return(
             <View style={styles.container}>

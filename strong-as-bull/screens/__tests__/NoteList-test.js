@@ -1,19 +1,18 @@
 import 'react-native';
 import React from 'react';
 import NoteListScreen from '../notes/NoteListScreen.js';
-import renderer from 'react-test-renderer';
 
-/*
-it('CreateContact snapshot', () => {
-    const snap = renderer.create(
-        <NoteListScreen/>
-    ).toJSON();
+import ShallowRenderer from "react-test-renderer/shallow";
+//import {ScrollView} from "react-native";
 
-    expect(snap).toMatchSnapshot();
+const renderer = new ShallowRenderer();
+renderer.render(<NoteListScreen />);
+const result = renderer.getRenderOutput();
 
+
+it('renders', () => {
+    //Jest will not accept any of the variations we tried for ScrollView type:
+    //expect(result.type).toBe(ScrollView);
+    expect(result.props.children).toEqual([]);
 });
-*/
 
-it('works', () => {
-    expect(1).toBe(1);
-});

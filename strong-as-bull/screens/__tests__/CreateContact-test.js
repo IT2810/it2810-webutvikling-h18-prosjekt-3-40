@@ -13,31 +13,8 @@ it('CreateContact snapshot', () => {
 
 });
 
-it('test constructor and componentDidMount create new', () => {
-    let instance = renderer.create(
-        <CreateContactScreen/>
-    ).getInstance();
 
-    let testState = {
-        first_name: '',
-        last_name: '',
-        email: 'JohnApple@america.com',
-        phone_umber: '99912345',
-        company: 'Company',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
-        contact: null,
-        key: null,
-        chosenOne: null
-    };
-
-    const navigation = { navigate: jest.fn() };
-
-});
-
-it('test constructor and componentDidMount create new', () => {
-
-    const navigation = { navigate: jest.fn() };
-    console.log(navigation);
+it('test constructor and componentDidMount', () => {
 
     let instance = renderer.create(
         <CreateContactScreen/>
@@ -47,7 +24,9 @@ it('test constructor and componentDidMount create new', () => {
         first_name: '',
         last_name: '',
         email: 'JohnApple@america.com',
-        phone_umber: '99912345',
+
+        phone_number: '99912345',
+
         company: 'Company',
         image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
         contact: null,
@@ -56,8 +35,6 @@ it('test constructor and componentDidMount create new', () => {
     };
 
     expect(instance.state).toEqual(testState);
-
-
 
 });
 

@@ -14,9 +14,12 @@ export default class CreateGoalScreen extends React.Component {
         };
     };
 
-    //Checks if the state is a number, if it is, then it changes the step goal
+
     setNewGoal() {
         this.setState({new_step_goal: Number(this.state.new_step_goal)});
+        console.log(typeof this.state.new_step_goal);
+        console.log(this.state.new_step_goal);
+
         if (typeof this.state.new_step_goal === "number") {
             const {params} = this.props.navigation.state;
             params.setGoal(this.state.new_step_goal);
